@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "572163600234",
+    "firebase_url": "https://not-instant-camera.firebaseio.com",
+    "project_id": "not-instant-camera",
+    "storage_bucket": "not-instant-camera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572163600234:android:b5e3ca5a535c5277",
+        "android_client_info": {
+          "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572163600234-1mgqh5tfv7skoo5n2slimes7nai24mnd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera",
+            "certificate_hash": "3afd34d7051ea5033219299bae96ad08cb7c3ab5"
+          }
+        },
+        {
+          "client_id": "572163600234-392a1uke24vq896nl21nb2abrib5jn1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera",
+            "certificate_hash": "c88dbf46d48fa1a88d1d95ca228a876cbae69194"
+          }
+        },
+        {
+          "client_id": "572163600234-9o6mo48a0r8hhqqbs1i5i6ovr98i705a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera",
+            "certificate_hash": "86b89e8610e471e2ba80fb26ee679f3df7569a6c"
+          }
+        },
+        {
+          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK2wbgFC--ocMzPRpWW_Mq3dwa-EVEGY4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572163600234:android:4ad92c0d537d9c45",
+        "android_client_info": {
+          "package_name": "au.id.martinstrauss.noninstantgallery.noninstantgallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572163600234-godjf3a7hu31ni8713an9r6rmj4b6gh8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantgallery.noninstantgallery",
+            "certificate_hash": "86b89e8610e471e2ba80fb26ee679f3df7569a6c"
+          }
+        },
+        {
+          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK2wbgFC--ocMzPRpWW_Mq3dwa-EVEGY4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

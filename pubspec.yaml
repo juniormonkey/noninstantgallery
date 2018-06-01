@@ -1,0 +1,17 @@
+name: UncannyGallery
+description: A browser for the images in the UncannyCamera app.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  connectivity: ^0.3.0
+  image: ^1.1.31
+  http: ^0.11.3
+  google_sign_in: ^3.0.3
+  firebase_auth: ^0.5.9
+  firebase_database: ^0.4.6
+  firebase_storage: ^0.3.4
+  path_provider: ^0.4.0
+
+flutter:
+  uses-material-design: true
