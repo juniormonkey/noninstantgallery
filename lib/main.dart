@@ -117,11 +117,18 @@ class UncannyImage extends StatelessWidget {
         child: new Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Image.network(snapshot.value['file'], height: 250.0),
+            _image(snapshot.value['file']),
           ],
         ),
       ),
     );
+  }
+
+  Widget _image(String url) {
+    if(localFiles.containsKey(url) && localFiles[url] != null) {
+      return new Image.file(localFiles[url], width: 200.0);
+    }
+    return new Text(url);
   }
 }
 
@@ -130,25 +137,29 @@ class Gallery extends StatefulWidget {
   State createState() => new GalleryState();
 }
 
+Map<String, File> localFiles = new Map();
+
 class GalleryState extends State<Gallery> {
-  static const int MAX_PRIORITY = 10000;
+  //static const int MAX_PRIORITY = 10000;
 
   BuildContext _context;
 
-/*
   StreamSubscription<Event> _dbSubscription;
-  StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  //StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  Queue<String> uploadQueue = new Queue();
+  //Queue<String> uploadQueue = new Queue();
 
   @override
   void initState() {
     super.initState();
 
+    localFiles.clear();
+
     _dbSubscription = reference.onValue.listen((Event event) async {
       if (event.snapshot.value != null) {
         event.snapshot.value.forEach((key, value) async {
-          await cache(value['file']);
+          String url = value['file'];
+          localFiles[url] = await cache(url);
         });
       }
     }, onError: (Object o) {
@@ -156,6 +167,7 @@ class GalleryState extends State<Gallery> {
       print('DatabaseError: ${error.code} ${error.message}');
     });
 
+    /*
     _connectivitySubscription = new Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) async {
@@ -172,14 +184,16 @@ class GalleryState extends State<Gallery> {
         await _upload(filename);
       }
     });
+    */
   }
 
   dispose() {
     _dbSubscription.cancel();
-    _connectivitySubscription.cancel();
+//    _connectivitySubscription.cancel();
     super.dispose();
   }
 
+/*
   _upload(String filename) async {
     await _ensureLoggedIn();
 
@@ -232,6 +246,12 @@ class GalleryState extends State<Gallery> {
             );
           },
         ),
+      ),
+      new FloatingActionButton(
+        child: const Icon(Icons.refresh),
+        onPressed: () {
+          setState(() {});
+        },
       ),
     ]);
   }
