@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:io';
 import 'dart:math';
 
@@ -8,7 +7,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -55,7 +53,6 @@ Future<Null> _ensureLoggedIn() async {
 
     currentFirebaseUser = await auth.currentUser();
   } catch (e) {
-    print('_ensureLoggedIn: $e');
   }
 }
 
@@ -150,9 +147,6 @@ class UncannyImage extends StatelessWidget {
     }
   }
 
-  void notify(String message) {
-  }
-
   void error(String message) {
     message = 'ERROR: $message';
     print(message);
@@ -172,19 +166,19 @@ class Gallery extends StatefulWidget {
 Map<String, File> localFiles = new Map();
 
 class GalleryState extends State<Gallery> {
-  //static const int MAX_PRIORITY = 10000;
-
   BuildContext _context;
 
   StreamSubscription<Event> _dbSubscription;
-  //StreamSubscription<ConnectivityResult> _connectivitySubscription;
-
-  //Queue<String> uploadQueue = new Queue();
 
   @override
   void initState() {
     super.initState();
 
+    _setUpDbSubscription();
+  }
+
+  void _setUpDbSubscription() async {
+    await _ensureLoggedIn();
     localFiles.clear();
 
     _dbSubscription = reference.onValue.listen((Event event) async {
@@ -198,56 +192,12 @@ class GalleryState extends State<Gallery> {
       final DatabaseError error = o;
       print('DatabaseError: ${error.code} ${error.message}');
     });
-
-    /*
-    _connectivitySubscription = new Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) async {
-      if (result == ConnectivityResult.none) {
-        // Don't try to upload if there's no Internet.
-        return;
-      }
-      if (uploadQueue.length == 0) {
-        // Don't try to remove anything if the queue is empty.
-        return;
-      }
-      var filename;
-      while (filename = uploadQueue.removeFirst() != null) {
-        await _upload(filename);
-      }
-    });
-    */
   }
 
   dispose() {
     _dbSubscription.cancel();
-//    _connectivitySubscription.cancel();
     super.dispose();
   }
-
-/*
-  _upload(String filename) async {
-    await _ensureLoggedIn();
-
-    File imageFile = new File(filename);
-    StorageReference ref =
-    FirebaseStorage.instance.ref().child(basename(imageFile.path));
-    StorageUploadTask uploadTask = ref.putFile(imageFile);
-    try {
-      Uri downloadUrl = (await uploadTask.future).downloadUrl;
-
-      int priority = rng.nextInt(MAX_PRIORITY);
-      reference.push().set({
-        'file': downloadUrl.toString(),
-        'senderId': currentFirebaseUser.uid,
-        'senderEmail': currentFirebaseUser.email,
-      }, priority: priority);
-    } catch (e) {
-      error('_upload: $e');
-      uploadQueue.add(filename);
-    }
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -282,26 +232,22 @@ class GalleryState extends State<Gallery> {
       new FloatingActionButton(
         child: const Icon(Icons.refresh),
         onPressed: () {
-          setState(() {});
+          setState(() {
+            if (_dbSubscription != null) _dbSubscription.cancel();
+            _setUpDbSubscription();
+          });
         },
       ),
     ]);
   }
 
-  void notify(String message) {
+  void error(String message) {
+    message = 'ERROR: $message';
     print(message);
     if (_context != null) {
       Scaffold
           .of(_context)
           .showSnackBar(new SnackBar(content: new Text(message)));
     }
-  }
-
-  void error(String message) {
-    message = 'ERROR: $message';
-    setState(() {
- //     _placeholderText = message;
-    });
-    notify(message);
   }
 }

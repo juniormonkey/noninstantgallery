@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "572163600234-1mgqh5tfv7skoo5n2slimes7nai24mnd.apps.googleusercontent.com",
+          "client_id": "572163600234-9o6mo48a0r8hhqqbs1i5i6ovr98i705a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera",
-            "certificate_hash": "3afd34d7051ea5033219299bae96ad08cb7c3ab5"
+            "certificate_hash": "86b89e8610e471e2ba80fb26ee679f3df7569a6c"
           }
         },
         {
@@ -31,16 +31,12 @@
           }
         },
         {
-          "client_id": "572163600234-9o6mo48a0r8hhqqbs1i5i6ovr98i705a.apps.googleusercontent.com",
+          "client_id": "572163600234-1mgqh5tfv7skoo5n2slimes7nai24mnd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "au.id.martinstrauss.noninstantcamera.noninstantcamera",
-            "certificate_hash": "86b89e8610e471e2ba80fb26ee679f3df7569a6c"
+            "certificate_hash": "3afd34d7051ea5033219299bae96ad08cb7c3ab5"
           }
-        },
-        {
-          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
-          "client_type": 3
         },
         {
           "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
@@ -87,8 +83,28 @@
           }
         },
         {
-          "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "572163600234-rd9iduerkl40erfuuas5v9g6a0nr2d48.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantgallery.noninstantgallery",
+            "certificate_hash": "c88dbf46d48fa1a88d1d95ca228a876cbae69194"
+          }
+        },
+        {
+          "client_id": "572163600234-oarf7kk8fqaqq1gh3vskogg78kivsfp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantgallery.noninstantgallery",
+            "certificate_hash": "3afd34d7051ea5033219299bae96ad08cb7c3ab5"
+          }
+        },
+        {
+          "client_id": "572163600234-ko1evml6vi1cats5h10n1e7pv50668d1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.id.martinstrauss.noninstantgallery.noninstantgallery",
+            "certificate_hash": "870db368c7f01f62d7422d2fe91da1c9c86ab00f"
+          }
         },
         {
           "client_id": "572163600234-kp6rrt7836tmhqn861j7bfqd0qbv2voo.apps.googleusercontent.com",
