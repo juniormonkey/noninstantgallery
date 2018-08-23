@@ -13,6 +13,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
@@ -104,10 +105,12 @@ class NonInstantGalleryApp extends StatelessWidget {
 @override
 class UncannyImage extends StatelessWidget {
   UncannyImage({this.snapshot, this.animation});
+  BuildContext _context;
   final DataSnapshot snapshot;
   final Animation animation;
 
   Widget build(BuildContext context) {
+    _context = context;
     return new SizeTransition(
       sizeFactor: new CurvedAnimation(
           parent: animation, curve: Curves.easeOut),
@@ -117,7 +120,11 @@ class UncannyImage extends StatelessWidget {
         child: new Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _image(snapshot.value['file']),
+            new GestureDetector(
+              onTap: () {
+                _share(snapshot.value['file']);
+              }, child: _image(snapshot.value['file']),
+            )
           ],
         ),
       ),
@@ -129,6 +136,31 @@ class UncannyImage extends StatelessWidget {
       return new Image.file(localFiles[url], width: 200.0);
     }
     return new Text(url);
+  }
+
+  _share(String url) {
+    if (url != null && localFiles.containsKey(url) && localFiles[url] != null) {
+      try {
+        final channel = const MethodChannel(
+            'channel:au.id.martinstrauss.noninstantgallery.share/share');
+        channel.invokeMethod('shareFile', basename(url));
+      } catch (e) {
+        error('shareImage: $e');
+      }
+    }
+  }
+
+  void notify(String message) {
+  }
+
+  void error(String message) {
+    message = 'ERROR: $message';
+    print(message);
+    if (_context != null) {
+      Scaffold
+          .of(_context)
+          .showSnackBar(new SnackBar(content: new Text(message)));
+    }
   }
 }
 
